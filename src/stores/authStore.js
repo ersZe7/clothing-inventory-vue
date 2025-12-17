@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-import { useAuthStore } from "../stores/authStore"
 
 export const useAuthStore = defineStore("auth", {
     state: () => ({
@@ -9,7 +8,7 @@ export const useAuthStore = defineStore("auth", {
 
     actions: {
         login(email, password) {
-            if(email === "admin@gmail.com" && password === "admin12345") {
+            if(email === "admin" && password === "admin12345") {
                 this.user = {email}
                 this.isAuthenticated = true
 
