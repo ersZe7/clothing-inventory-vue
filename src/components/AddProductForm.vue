@@ -33,9 +33,6 @@ const submit = () => {
 <template>
   <form class="bg-white border rounded p-6 mb-8" @submit.prevent="submit">
     <h2 class="text-xl font-semibold mb-1">Add new product</h2>
-    <p class="text-sm text-gray-500 mb-4">
-      Fill in product information and initial stock
-    </p>
 
     <p v-if="error" class="text-red-600 mb-3">{{ error }}</p>
 

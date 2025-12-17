@@ -9,9 +9,6 @@ const store = useProductStore()
 <template>
   <div>
     <h1 class="text-2xl font-bold mb-1">Products</h1>
-    <p class="text-gray-600 mb-6">
-      Manage product catalog and stock levels
-    </p>
 
     <AddProductForm />
     <ProductTable :products="store.products" />

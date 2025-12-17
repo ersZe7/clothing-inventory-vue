@@ -73,9 +73,6 @@ const submit = () => {
     <h2 class="text-xl font-semibold mb-1">
       Create Order
     </h2>
-    <p class="text-sm text-gray-500 mb-4">
-      Fill customer and product information
-    </p>
 
     <p v-if="error" class="text-red-600 mb-3">
       {{ error }}

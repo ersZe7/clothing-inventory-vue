@@ -4,7 +4,7 @@ import Dashboard from "../pages/Dashboard.vue"
 import Products from "../pages/Products.vue"
 import Login from "../pages/Login.vue"
 import NotFound from "../pages/NotFound.vue"
-import { useAuthStore } from "../stores/authStore" // пока не нужен
+import { useAuthStore } from "../stores/authStore"
 
 const routes = [
   {
