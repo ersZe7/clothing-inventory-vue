@@ -1,1 +1,0 @@
-import{_ as o,a as n,b as t,o as r}from"./index-BhoNZVaI.js";const s={};function a(c,e){return r(),n("div",null,[...e[0]||(e[0]=[t("h1",null,"404",-1)])])}const _=o(s,[["render",a]]);export{_ as default};
