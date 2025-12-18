@@ -1,0 +1,1 @@
+import{s as r}from"./index-BhoNZVaI.js";import{u as o}from"./productStore-0Djz6UEw.js";const i=r("orders",{state:()=>({orders:[]}),actions:{createOrder(t){o().sell(t.productId,t.size,t.quantity),this.orders.unshift({id:Date.now(),date:new Date().toLocaleString(),...t})},deleteOrder(t){this.orders=this.orders.filter(e=>e.id!==t)}}});export{i as u};
