@@ -1,36 +1,25 @@
-import { defineStore } from "pinia";
+import { defineStore } from "pinia"
+import { useLocalStorage } from "../composables/useLocalStorage"
 
 export const useAuthStore = defineStore("auth", {
-    state: () => ({
-        user: null,
-        isAuthenticated: false
-    }),
+  state: () => ({
+    user: useLocalStorage("user", null),
+    isAuthenticated: useLocalStorage("auth", false),
+  }),
 
-    actions: {
-        login(email, password) {
-            if(email === "admin" && password === "admin12345") {
-                this.user = {email}
-                this.isAuthenticated = true
-
-                localStorage.setItem("auth", "true")
-                localStorage.setItem("user", JSON.stringify(this.user))
-                return true
-            }
-            return false
-        },
-
-        logout() {
-            this.user = null
-            this.isAuthenticated = false
-            localStorage.clear()
-        },
-
-        loadSession() {
-            const auth = localStorage.getItem("auth")
-            if(auth) {
-                this.isAuthenticated = true
-                this.user = JSON.parse(localStorage.getItem("user"))
-            }
-        },
+  actions: {
+    login(username, password) {
+      if (username === "admin" && password === "admin12345") {
+        this.user = { username }
+        this.isAuthenticated = true
+        return true
+      }
+      return false
     },
+
+    logout() {
+      this.user = null
+      this.isAuthenticated = false
+    },
+  },
 })

@@ -1,5 +1,5 @@
 <script setup>
-import { computed } from "vue"
+import { computed, watch } from "vue"
 import { useProductStore } from "../stores/productStore"
 import { useOrderStore } from "../stores/orderStore"
 
@@ -22,7 +22,16 @@ const totalStock = computed(() =>
     )
   }, 0)
 )
+
+watch(() => orderStore.orders.length,
+  (newValue, oldValue) => {
+    if (newValue > oldValue) {
+      console.log("📦 New order added")
+    }
+  }
+)
 </script>
+
 
 <template>
   <div>
