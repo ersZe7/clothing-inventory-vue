@@ -1,8 +1,7 @@
 <script setup>
 import { reactive, ref } from "vue"
-import { useProductStore } from "../stores/productStore"
 
-const store = useProductStore()
+const emit = defineEmits(["add"])
 const error = ref("")
 
 const form = reactive({
@@ -17,7 +16,7 @@ const submit = () => {
     return
   }
 
-  store.addProduct({
+  emit("add", {
     name: form.name,
     price: Number(form.price),
     sizes: { ...form.sizes },
@@ -36,26 +35,19 @@ const submit = () => {
 
     <p v-if="error" class="text-red-600 mb-3">{{ error }}</p>
 
-    <label class="block text-sm text-gray-600 mb-1">Product name</label>
-    <input v-model="form.name" class="border p-2 w-full mb-3" />
-
-    <label class="block text-sm text-gray-600 mb-1">Price</label>
-    <input
-      v-model="form.price"
-      type="number"
-      class="border p-2 w-full mb-4"
-    />
+    <input v-model="form.name" placeholder="Product name" class="border p-2 w-full mb-3" />
+    <input v-model="form.price" type="number" placeholder="Price" class="border p-2 w-full mb-4" />
 
     <div class="grid grid-cols-4 gap-3 mb-4">
-      <div v-for="size in ['S','M','L','XL']" :key="size">
-        <label class="block text-sm text-gray-600 mb-1">{{ size }}</label>
-        <input
-          v-model.number="form.sizes[size]"
-          type="number"
-          min="0"
-          class="border p-2 w-full"
-        />
-      </div>
+      <input
+        v-for="size in ['S','M','L','XL']"
+        :key="size"
+        v-model.number="form.sizes[size]"
+        type="number"
+        min="0"
+        :placeholder="size"
+        class="border p-2 w-full"
+      />
     </div>
 
     <button class="bg-blue-600 text-white px-4 py-2 rounded">

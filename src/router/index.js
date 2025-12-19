@@ -1,9 +1,5 @@
-import { createRouter, createWebHistory } from "vue-router"
+import { createRouter, createWebHashHistory } from "vue-router"
 import Layout from "../components/Layout.vue"
-import Dashboard from "../pages/Dashboard.vue"
-import Products from "../pages/Products.vue"
-import Login from "../pages/Login.vue"
-import NotFound from "../pages/NotFound.vue"
 import { useAuthStore } from "../stores/authStore"
 
 const routes = [
@@ -14,11 +10,15 @@ const routes = [
     children: [
       {
         path: "",
-        component: Dashboard,
+        component: () => import("../pages/Dashboard.vue"),
       },
       {
         path: "products",
-        component: Products,
+        component: () => import("../pages/Products.vue"),
+      },
+      {
+        path: "products/:id",
+        component: () => import("../pages/ProductDetails.vue"),
       },
       {
         path: "orders",
@@ -28,24 +28,20 @@ const routes = [
         path: "orders/new",
         component: () => import("../pages/NewOrder.vue"),
       },
-      {
-        path: "products/:id",
-        component: () => import("../pages/ProductDetails.vue"),
-      },
     ],
   },
   {
     path: "/login",
-    component: Login,
+    component: () => import("../pages/Login.vue"),
   },
   {
     path: "/:catchAll(.*)",
-    component: NotFound,
+    component: () => import("../pages/NotFound.vue"),
   },
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
 })
 
@@ -55,6 +51,5 @@ router.beforeEach((to) => {
     return "/login"
   }
 })
-
 
 export default router

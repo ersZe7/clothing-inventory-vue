@@ -21,11 +21,9 @@ const totalStock = (product) =>
 
     <tbody>
       <tr
-        v-for="p in products"
-        :key="p.id"
-        class="border-t hover:bg-gray-50 transition"
-      >
-        <!-- 🔥 ВОТ ОНО -->
+        v-for="p in products" :key="p.id"
+        class="border-t hover:bg-gray-50 transition">
+
         <td class="p-3 text-primary hover:underline">
           <router-link :to="`/products/${p.id}`">
             {{ p.name }}

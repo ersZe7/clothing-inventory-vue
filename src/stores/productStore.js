@@ -13,7 +13,6 @@ export const useProductStore = defineStore("products", {
       },
     ],
 
-    // 🔥 добавляем для API
     loading: false,
     error: null,
   }),
